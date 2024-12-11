@@ -4,9 +4,6 @@ import pandas as pd
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from fraud_predictor.preprocessors.preprocessing import load_df, drop_unnecessary_columns
 
-
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
 def test_drop_unnecessary_columns():
     csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../fraud_predictor/data/dropped_df.csv'))
     

@@ -35,7 +35,6 @@ def test_create_channel_usage():
     assert (result_df['channel_usage'] >= 0).all(), "channel_usage has values lower tham 0"
     assert (result_df['channel_usage'] <= 1).all(), "channel_usage has values greater than 1"
 
-    
 
     
 

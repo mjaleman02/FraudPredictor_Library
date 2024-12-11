@@ -16,13 +16,12 @@ def transform_to_datetime_type(df):
 
 def create_time_columns(df):
     """
-    Create columns for month, day, and hour from the 'timestamp' column.
+    Create columns for month and day from the 'timestamp' column.
     """
     if not pd.api.types.is_datetime64_any_dtype(df['timestamp']):
         raise ValueError("The 'timestamp' column must be in datetime format.")
     df['transaction_month'] = df['timestamp'].dt.month
     df['transaction_day'] = df['timestamp'].dt.day
-    df['transaction_hour'] = df['timestamp'].dt.hour
     
     return df
 

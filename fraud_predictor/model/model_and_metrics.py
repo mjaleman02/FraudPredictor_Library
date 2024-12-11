@@ -87,7 +87,6 @@ def calculate_roc_auc(model, X, y):
 def calculate_f1(y_test, predictions, model_name="model", average='weighted'):
     """Compute the F1 score for a given model's predictions."""
     f1 = f1_score(y_test, predictions, average=average)
-    print(f"{model_name} F1 score: {f1:.4f}")
     return f1
 
 

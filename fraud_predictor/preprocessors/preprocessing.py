@@ -45,4 +45,4 @@ def drop_unnecessary_columns(df):
     if not existing_columns_to_drop:
         raise ValueError("The indicated columns don't exits in df")
     
-    return df.drop(columns=existing_columns_to_drop)
+    return df.drop(columns=existing_columns_to_drop) 

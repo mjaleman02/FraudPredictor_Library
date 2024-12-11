@@ -4,7 +4,7 @@ import pandas as pd
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from fraud_predictor.preprocessors.preprocessing import load_df, drop_unnecessary_columns 
-from fraud_predictor.features.features_creation import create_time_columns, transform_to_datetime_type
+from fraud_predictor.features.features_creation import create_time_columns, transform_to_datetime_type, create_channel_usage, create_interaction_by_category
 
 def test_create_time_columns():
     csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../fraud_predictor/data/dropped_df.csv'))
@@ -23,3 +23,35 @@ def test_create_time_columns():
     ]
     
     assert set(result_df.columns) == set(expected_columns)
+
+
+def test_create_channel_usage():
+    csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../fraud_predictor/data/dropped_df.csv'))
+    
+    df = pd.read_csv(csv_path)
+    result_df = create_channel_usage(df)
+
+    assert (result_df['channel_usage'] >= 0).all(), "channel_usage has values lower tham 0"
+    assert (result_df['channel_usage'] <= 1).all(), "channel_usage has values greater than 1"
+
+    print("Test passed!")
+    
+if __name__ == '__main__':
+    test_create_channel_usage()
+    
+
+def test_create_interaction_by_category():
+    csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '../fraud_predictor/data/dropped_df.csv'))
+    
+    df = pd.read_csv(csv_path)
+
+    result_df = create_interaction_by_category(df, 
+                                               col1='amount', 
+                                               col2='merchant_category', 
+                                               new_col_name='value_by_category')
+    
+    assert (result_df['value_by_category'] > 0).all(), "value_by_category ha valori minori di 0"
+    print("Test passed!")
+
+if __name__ == '__main__':
+    test_create_interaction_by_category()

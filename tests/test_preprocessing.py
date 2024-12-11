@@ -17,5 +17,4 @@ def test_drop_unnecessary_columns():
         'device', 'channel', 'distance_from_home', 'high_risk_merchant', 
         'transaction_hour', 'weekend_transaction', 'is_fraud'
     ]
-
     assert list(result_df.columns) == expected_columns

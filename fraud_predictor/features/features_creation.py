@@ -22,7 +22,6 @@ def create_time_columns(df):
         raise ValueError("The 'timestamp' column must be in datetime format.")
     df['transaction_month'] = df['timestamp'].dt.month
     df['transaction_day'] = df['timestamp'].dt.day
-    df['transaction_hour'] = df['timestamp'].dt.hour
     
     return df
 

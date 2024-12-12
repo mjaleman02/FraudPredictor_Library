@@ -49,6 +49,7 @@ Columns That We Created (5 columns) :
 - transaction_day : Column for day from the 'timestamp' column.
 - channel_usage : Calculate frequency with which each customer makes purchases based on individual channels.
 - value_by_category : Interaction term that normalizes the amount within each merchant category.
+- payment_safety : Column that indicates the level of safety of the payment (manually mapped from 1 to 4)
 
 Target Variable : is_fraud
 
@@ -87,10 +88,11 @@ Website : https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?end=2023&start=196
     - test_merging.py - tests merging functions
     - test_preprocessing.py - tests preprocessing functions 
 - api folder
-    - model.pkl file
-    - Api.py file
-    - features.json file
-    - example_input.json file
+    - model.pkl - pickle that contains the model trained 
+    - main.py - python file that defines the API
+    - features.json - json file that lists the features 
+    - example_input.json - json file that inputs some values to the endpoint in order to yield a prediction 
+    - test_predict_endpoint.py - python file to test the API
 
 
 ## Scalability of the Library :

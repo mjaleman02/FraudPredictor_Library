@@ -162,3 +162,18 @@ async def predict(input_data: ModelInput):
         return {"prediction": int(prediction[0])}
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
+    
+    
+def validate_features(input_df):
+    """
+    Validate that all features required by the model are present in the input.
+    """
+    print("Feature names from model:", feature_names)  # Debugging
+    print("Input DataFrame columns:", input_df.columns)  # Debugging
+
+    missing_features = [feat for feat in feature_names if feat not in input_df.columns]
+    if missing_features:
+        raise ValueError(f"Missing features in input: {missing_features}")
+    return input_df
+
+validate_features(input)

@@ -50,7 +50,67 @@ Columns That We Created (5 columns) :
 - channel_usage : Calculate frequency with which each customer makes purchases based on individual channels.
 - value_by_category : Interaction term that normalizes the amount within each merchant category.
 
-Disclaimer - Due to the large size of the synthetic_fraud_data.csv of 3GB, in the repository we have only included a reduced .csv with 10,000 observations, that is indeed the one that has been used for the whole analysis.
+Target Variable : is_fraud
+
+Disclaimer - Due to the large size of the synthetic_fraud_data.csv of 3GB from Kaggle, in our repository we have only included a reduced csv sample file with 10,000 observations, which is indeed the one that has been used for the whole analysis. The functions used with original dataset such as reading the csv file and creating the sample have been left in the code but have been commented out in order for the whole process to still be seen from start to finish. 
+
+
+## Additional Datasets :
+In order to improve our model and include more characteristics that could potentially help distinguish a transaction from being legitimate or fraudulant, we decided to include two more additional datasets that were later on merged within our code.
+
+1. GDP
+Website : https://data.worldbank.org/indicator/NY.GDP.MKTP.CD 
+
+2. GDP per capita
+Website : https://data.worldbank.org/indicator/NY.GDP.PCAP.CD?end=2023&start=1960&view=chart
 
 
 ## Github Repository Structure :
+- README file
+- setup.py file
+- notebook_project_fp.ipynb - Our main jupyter notebook to run all functions and model
+- fraud_predictor folder
+    - data - holds the three datasets
+          - dropped_df.csv - Sample of Kaggle's transactions dataset (10,000 random sample)
+          - gdp_country.csv - GDP data
+          - gdp_per_capita.csv - GDP per capita data
+    - features folder
+          - features_creation.py - python file of functions used for features
+    - merging folder
+          - merging_df.py - python file of functions used for merging
+    - model folder
+          - model_and_metrics.py - python file of functions used to make model
+    - preprocessors folder
+          - preprocessing.py - python file of functions used to preprocess 
+- test folder
+    - test_features.py - tests features functions 
+    - test_merging.py - tests merging functions
+    - test_preprocessing.py - tests preprocessing functions 
+- api folder
+    - model.pkl file
+    - Api.py file
+    - features.json file
+    - example_input.json file
+
+
+## Scalability of the Library :
+To add new preprocessors, you can:
+- Adjust list of columns to be dropped in the drop_unnecessary_columns function.
+- Modify the sample size of the dataset by changing the number of observations.
+- Include new preprocessor functions in preprocessors/preprocessing.py.
+- Will need to update the respective test cases in tests/test_preprocessing.py to ensure the edits or adjustments work correctly.
+
+To add new features, you can:
+- Adjust categories used to for hours of the day in the categorize_hour_column function. 
+- Create a new interaction column by updating the col1 and col2 chosen columns in the create_interaction_by_category function.
+- Modify the device_mapping dictionary used for the create_payment_safety function in case new device groupings want to be used.
+- Include new features functions in features/features_creation.py.
+- Will need to update the respective test cases in tests/test_features.py to ensure the edits or adjustments work correctly.
+     
+To add new models and metrics, you can:
+- Modify those values and columns that have been renamed within their respective dictionaries in the rename_columns and rename_values functions.
+- Adjust the test size or lightgbm model metrics within the split_data and tune_lightgbm functions.
+- Include new metrics that can be calculated from the model in model/model_and_metrics.py
+- Include new model, metrics, or visualization functions in model/model_and_metrics.py.
+
+Note : For any new columns or features added, the Api.py and json files will need to be updated.

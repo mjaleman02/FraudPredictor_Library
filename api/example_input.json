@@ -1,0 +1,23 @@
+{
+  "customer_id": "CUST_12345",
+  "merchant_category": "Retail",
+  "amount": 123.45,
+  "currency": "USD",
+  "country": "USA",
+  "city_size": "large",
+  "card_type": "Platinum Credit",
+  "card_present": true,
+  "device": "Chip Reader",
+  "channel": "pos",
+  "weekend_transaction": false,
+  "GDP": 217367000000.0,
+  "GDP_per_capita": 10043.62,
+  "transaction_month": 10,
+  "transaction_day": 15,
+  "hour_category": "morning",
+  "channel_usage": 0.5,
+  "value_by_category": 0.01,
+  "payment_safety": 4,
+  "high_risk_merchant": false,
+  "distance_from_home": 0
+}

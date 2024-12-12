@@ -1,0 +1,1 @@
+["customer_id", "merchant_category", "amount", "currency", "country", "city_size", "card_type", "card_present", "device", "channel", "distance_from_home", "high_risk_merchant", "weekend_transaction", "GDP", "GDP_per_capita", "transaction_month", "transaction_day", "hour_category", "channel_usage", "value_by_category", "payment_safety"]
